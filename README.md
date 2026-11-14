@@ -8,7 +8,7 @@ This repository contains hands-on, reproducible data engineering projects. The f
 
 | Project | Description | Status |
 |---|---|---|
-| [01 - Retail Medallion Architecture](01-medallion-architecture/README.md) | Batch ingestion and Bronze/Silver/Gold Delta tables using PySpark | In progress |
+| [01 - Retail Medallion Architecture](01-medallion-architecture/README.md) | Batch ingestion and Bronze/Silver/Gold Delta tables using PySpark | In progress |\n| [02 - End-to-End Azure Retail Pipeline](02-azure-end-to-end-pipeline/README.md) | ADLS Gen2, ADF, Databricks Auto Loader, Delta Lake and Gold analytics | Implementation templates added |
 | 02 - Incremental ETL Framework | Planned: incremental processing, merge/upsert patterns and replay | Planned |
 | 03 - Data Quality Framework | Planned: reusable validation, quarantine and monitoring | Planned |
 
