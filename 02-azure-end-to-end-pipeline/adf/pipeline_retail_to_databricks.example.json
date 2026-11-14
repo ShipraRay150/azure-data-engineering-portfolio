@@ -1,0 +1,36 @@
+{
+  "name": "PL_RetailLakehouse_Orchestration",
+  "properties": {
+    "parameters": {
+      "landingPath": { "type": "string", "defaultValue": "abfss://landing@<storage-account>.dfs.core.windows.net/retail/orders/" }
+    },
+    "activities": [
+      {
+        "name": "Run_Retail_Databricks_Workflow",
+        "type": "DatabricksNotebook",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 2,
+          "retryIntervalInSeconds": 60,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "userProperties": [],
+        "typeProperties": {
+          "notebookPath": "/Shared/retail_lakehouse/run_pipeline",
+          "baseParameters": {
+            "landing_path": { "value": "@pipeline().parameters.landingPath", "type": "Expression" }
+          }
+        },
+        "linkedServiceName": {
+          "referenceName": "AzureDatabricksLinkedService",
+          "type": "LinkedServiceReference"
+        }
+      }
+    ],
+    "annotations": [
+      "Portfolio example: create the referenced linked service and notebook in your own Azure environment before publishing."
+    ]
+  }
+}
