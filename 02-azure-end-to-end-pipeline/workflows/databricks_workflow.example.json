@@ -1,0 +1,23 @@
+{
+  "name": "retail-medallion-pipeline",
+  "tasks": [
+    {
+      "task_key": "bronze_ingestion",
+      "python_file": "src/bronze_ingestion.py",
+      "description": "Incrementally ingest landing CSV files with Auto Loader"
+    },
+    {
+      "task_key": "silver_transform",
+      "depends_on": [{ "task_key": "bronze_ingestion" }],
+      "python_file": "src/silver_transform.py",
+      "description": "Cleanse, validate, deduplicate and quarantine records"
+    },
+    {
+      "task_key": "gold_aggregations",
+      "depends_on": [{ "task_key": "silver_transform" }],
+      "python_file": "src/gold_aggregations.py",
+      "description": "Publish business-ready Gold aggregates"
+    }
+  ],
+  "_note": "Illustrative task outline only. Convert to the current Databricks Jobs API schema and add your workspace-specific job cluster, libraries, permissions and Git source before deployment. Do not put secrets in this file."
+}
